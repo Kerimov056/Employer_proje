@@ -154,17 +154,13 @@ public class CompanyService
                 throw new AddCompanyFailedExceptions("Not Found");
             }
             if (company.Id==id) break;
-        }                                                                                  //yarimiciq qalib
+        }                                                                                  
         for (int i = 0; i < AppDbContext.companies.Length; i++)        
         {
             if (AppDbContext.companies[i].Id==id)
             {
                 AppDbContext.companies[i] = null;
-                for (int j = i+1; j < AppDbContext.companies.Length; j++)           //0 ucun olan wert yazmamisan.!!!
-                {
-                    //AppDbContext.companies[j].Id = AppDbContext.companies[i].Id;
-                    //    AppDbContext.companies[j].Id = AppDbContext.companies[j].
-                }
+                AppDbContext.companies[i] = AppDbContext.companies[i + 1];
                 _count--;
                 break;
             }

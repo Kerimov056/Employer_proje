@@ -15,7 +15,7 @@ EmployerService employerService = new EmployerService();
 Console.WriteLine("Welcome");
 while (true)                                                               
 {                            //enumnan yazmiwam swice case'i reqemleri sira oxunsun deye yazmisam.
-Start:
+    Start:
 
     Console.WriteLine("_______________________");
     Console.WriteLine("0 -> Exit " +                                        //Exit ->Cixis etmek:
@@ -95,7 +95,12 @@ Start:
                 Select_DepName:
                 Console.WriteLine("Enter Department name:");
                 string? name = Console.ReadLine();
-            EmployerLimit://bowluq adlari
+                if (String.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("You did not enter a valid name:");
+                    goto Select_DepName;
+                }
+            EmployerLimit:
                 Console.WriteLine("Enter Max Number");
                 string? employer_limit = Console.ReadLine();
                 int EmployerLimit;
@@ -169,10 +174,22 @@ Start:
                     }
                     break;
                 }
+            Select_empName:
                 Console.WriteLine("Enter Employer Name:");
                 string? EmployerName = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(EmployerName))
+                {
+                    Console.WriteLine("You did not enter a valid name:");
+                    goto Select_empName;
+                }
+            Select_empSurname:
                 Console.WriteLine("Enter Employer Surname:");
                 string? EmployerSurname = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(EmployerSurname))
+                {
+                    Console.WriteLine("You did not enter a valid Surname:");
+                    goto Select_empSurname;
+                }
             Select_Salary:
                 Console.WriteLine("Enter Salary:");
                 string? Value = Console.ReadLine();
