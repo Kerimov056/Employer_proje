@@ -1,0 +1,15 @@
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\bin\Debug\net6.0\CompanyInfastructuure.deps.json
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\bin\Debug\net6.0\CompanyInfastructuure.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\bin\Debug\net6.0\CompanyInfastructuure.pdb
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\bin\Debug\net6.0\Employeer.Core.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\bin\Debug\net6.0\Employeer.Core.pdb
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.csproj.AssemblyReference.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.AssemblyInfoInputs.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.AssemblyInfo.cs
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.csproj.CoreCompileInputs.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.csproj.CopyComplete
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\refint\CompanyInfastructuure.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\CompanyInfastructuure.pdb
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\CompanyInfastructure\obj\Debug\net6.0\ref\CompanyInfastructuure.dll

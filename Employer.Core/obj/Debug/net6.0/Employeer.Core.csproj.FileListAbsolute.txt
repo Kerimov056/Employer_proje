@@ -1,0 +1,12 @@
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\bin\Debug\net6.0\Employeer.Core.deps.json
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\bin\Debug\net6.0\Employeer.Core.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\bin\Debug\net6.0\Employeer.Core.pdb
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.csproj.AssemblyReference.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.AssemblyInfoInputs.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.AssemblyInfo.cs
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.csproj.CoreCompileInputs.cache
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\refint\Employeer.Core.dll
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\Employeer.Core.pdb
+C:\Users\Legion\Desktop\work.C#\Emloyer_project\Employer.Core\obj\Debug\net6.0\ref\Employeer.Core.dll
