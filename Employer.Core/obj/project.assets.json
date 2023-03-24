@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\Employer.Core\\Employeer.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\Employer.Core\\Employeer.Core.csproj",
       "projectName": "Employeer.Core",
-      "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\Employer.Core\\Employeer.Core.csproj",
+      "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\Employer.Core\\Employeer.Core.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\Employer.Core\\obj\\",
+      "outputPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\Employer.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",

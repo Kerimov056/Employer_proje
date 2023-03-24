@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,8 +71,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\CompanyInfastructure\\CompanyInfastructuure.csproj": {
-              "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project\\CompanyInfastructure\\CompanyInfastructuure.csproj"
+            "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\CompanyInfastructure\\CompanyInfastructuure.csproj": {
+              "projectPath": "C:\\Users\\Legion\\Desktop\\work.C#\\Emloyer_project_\\CompanyInfastructure\\CompanyInfastructuure.csproj"
             }
           }
         }

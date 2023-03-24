@@ -52,7 +52,6 @@ Start:
                 Environment.Exit(0);
                 break;
             case (int)Menu.CreatedCompany:
-                Console.Clear();
                 Console.WriteLine("Enter Company Name:");
                 string? Name = Console.ReadLine();
                 try
@@ -67,7 +66,6 @@ Start:
                 }
                 break;
             case (int)Menu.ListCompany:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
@@ -83,7 +81,6 @@ Start:
                 companyService.GetAll();
                 break;
             case (int)Menu.CreatedDepartment:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
@@ -95,9 +92,10 @@ Start:
                     }
                     break;
                 }
+                Select_DepName:
                 Console.WriteLine("Enter Department name:");
                 string? name = Console.ReadLine();
-            EmployerLimit:
+            EmployerLimit://bowluq adlari
                 Console.WriteLine("Enter Max Number");
                 string? employer_limit = Console.ReadLine();
                 int EmployerLimit;
@@ -145,7 +143,6 @@ Start:
                 }
                 break;
             case (int)Menu.ListDepartment:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -161,7 +158,6 @@ Start:
                 departmendServis.GetAll();
                 break;
             case (int)Menu.CreatedEmployer:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -225,7 +221,6 @@ Start:
                 }
                 break;
             case (int)Menu.ListEmployer:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
                     if (AppDbContext.employers[i] is null)
@@ -241,7 +236,6 @@ Start:
                 }
                 break;
             case (int)Menu.GetDepartmentEmployees:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
                     if (AppDbContext.employers[i] is null)
@@ -280,7 +274,6 @@ Start:
                 }
                 break;
             case (int)Menu.GetCompanyDepartment:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -319,7 +312,6 @@ Start:
                 }
                 break;
             case (int)Menu.UpdateDepartment:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -377,7 +369,6 @@ Start:
                 }
                 break;
             case (int)Menu.UpdateCompany:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
@@ -420,7 +411,6 @@ Start:
                 }
                 break;
             case (int)Menu.GetCompanyDepartmentName:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -445,7 +435,6 @@ Start:
                 }
                 break;
             case (int)Menu.DeleteCompany:
-                Console.Clear();
                 for (int i = 0; i < AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
@@ -485,7 +474,6 @@ Start:
                 }
                 break;
             case (int)Menu.EmployerInformation:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
                     if (AppDbContext.employers[i] is null)
@@ -512,7 +500,6 @@ Start:
                 }
                 break;
             case (int)Menu.EmployerDepartmentChange:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
                     if (AppDbContext.employers[i] is null)
@@ -570,7 +557,6 @@ Start:
                 }
                 break;
             case (int)Menu.CompanyInfo:
-                Console.Clear();
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)

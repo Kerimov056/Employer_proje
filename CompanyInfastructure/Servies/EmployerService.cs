@@ -9,7 +9,7 @@ public class EmployerService
 {
     private DepartmendService departmendService;
     public EmployerService employerService;
-    private int _sum = 0;
+    private static int _EmpLimitCount = 0;
     public EmployerService()
     {
         departmendService=new DepartmendService();
@@ -31,10 +31,10 @@ public class EmployerService
             }
             if (_departmentId == department.Id)
             {
-                if (_sum< department.EmployerLimit)                   
-                {               
-                    _sum++;
-                break;
+                if (_EmpLimitCount < department.EmployerLimit)                   
+                {
+                    _EmpLimitCount++;
+                     break;
                 }
                 else
                 {
