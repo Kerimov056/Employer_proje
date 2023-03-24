@@ -32,7 +32,7 @@ while (true)
                                                                  //--------------------------------------------------------------------
         "\n11 -> Common departments in the companys" +          //--8'ci case'le eynidir lakin 8'de companyleri ekran'a cixirdir secib,
                                                                //departmenleri gorursen. Lakin burda company'nin adini yazmalisanki olan,
-                                                              //Departmentleri cixarsin.
+                                                              //Departmentleri cixarsin. YENI 2cur yazmiwam hem nam'le hem id'le.
                                                              //-----------------------------------------------------------------------
         "\n12 -> Delete Company" +                          //DataBase'deki movcud bir Company'ni silmek.  //yarimciq qalib
         "\n13 -> Employee Information" +                   //bir employeri'n butun melumatlari:   

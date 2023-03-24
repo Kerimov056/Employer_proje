@@ -7,16 +7,21 @@ namespace CompanyInfastructuure.Servies;
 
 public class EmployerService
 {
-    private DepartmendService departmendService;
+    DepartmendService departmendService;
     public EmployerService employerService;
     private static int _EmpLimitCount = 0;
-    public EmployerService()
-    {
-        departmendService=new DepartmendService();
-    }
+
     public static int _count = 0;
     public void Create(string _name, string _surname, double _salary, int _departmentId)
     {
+        foreach (var department1 in AppDbContext.departments)
+        {
+            if (department1 is null)
+            {
+                throw new AddDepartmentFailedException("Not Found Department");
+            }
+            if (department1.Id == _departmentId) break;
+        }
         _name.Trim();
         _surname.Trim();
         if (String.IsNullOrWhiteSpace(_name) || String.IsNullOrWhiteSpace(_surname))
@@ -25,10 +30,6 @@ public class EmployerService
         }
         foreach (var department in AppDbContext.departments)
         {
-            if (department is null)
-            {
-                throw new AddDepartmentNotExistException("This Department is not exist");
-            }
             if (_departmentId == department.Id)
             {
                 if (_EmpLimitCount < department.EmployerLimit)                   
@@ -136,6 +137,5 @@ public class EmployerService
             }
         }
     }
-
 }
 

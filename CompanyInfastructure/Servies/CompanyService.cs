@@ -151,7 +151,7 @@ public class CompanyService
         {
             if (company is null)
             {
-                throw new AddCompanyFailedExceptions("Not Found");
+                throw new AddCompanyFailedExceptions("Not Found Company");
             }
             if (company.Id==id) break;
         }                                                                                  

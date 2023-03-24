@@ -7,10 +7,22 @@ namespace CompanyInfastructuure.Servies;
 
 public class DepartmendService
 {
-   
+   private EmployerService employerService;
+    public DepartmendService()
+    {
+        employerService= new EmployerService();
+    }
     public static int _count = 0;
     public void Created(string name, int employer_limit, int Company_Id)
     {
+        foreach (var company in AppDbContext.companies)
+        {
+            if (company is null)
+            {
+                throw new AddCompanyFailedExceptions("Not Found Company");
+            }
+            if (company.Id== Company_Id) break;
+        }
         name.Trim();
         if (String.IsNullOrWhiteSpace(name))
         {
@@ -19,7 +31,7 @@ public class DepartmendService
         bool isCheck = false;
         for (int i = 0; i < _count; i++)
         {
-            if (AppDbContext.departments[i].Name.ToUpper() == name.ToUpper())
+            if (AppDbContext.departments[i].Name.ToUpper() == name.ToUpper() && Company_Id == AppDbContext.departments[i].CompanyId)
             {
                 isCheck = true; break;
             }
@@ -27,14 +39,6 @@ public class DepartmendService
         if (isCheck)
         {
             throw new isAvailableExceptioon("The Department  already exists  this name");
-        }
-        foreach (var company in AppDbContext.companies)
-        {
-            if (company is null)
-            {
-                throw new AddCompanyFailedExceptions("Not Found");
-            }
-            if (company.Id== Company_Id) break;
         }
         Department department = new Department(name, employer_limit, Company_Id);
         AppDbContext.departments[_count++] = department;
@@ -169,5 +173,6 @@ public class DepartmendService
             }
         }
     }
+
 }
 
