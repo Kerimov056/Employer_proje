@@ -247,10 +247,10 @@ while (true)
                         Console.WriteLine("Employer mövcud deyil:");
                         goto Start;
                     }
-                    Console.WriteLine("Employer List");
-                    employerService.GetAll();
                     break;
                 }
+                Console.WriteLine("Employer List");
+                employerService.GetAll();
                 break;
             case (int)Menu.GetDepartmentEmployees:
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
@@ -279,6 +279,15 @@ while (true)
                 {
                     Console.WriteLine("You can't enter negative numbers!!!");
                     goto Select_Department;
+                }
+                foreach (var employer1 in AppDbContext.employers)
+                {
+                    if (employer1 is null) break;
+                    if (employer1.DeparmentId != Department_id)
+                    {
+                        Console.WriteLine("There is No Employer");
+                        break;
+                    }
                 }
                 try
                 {
@@ -318,6 +327,15 @@ while (true)
                     Console.WriteLine("You can't enter negative numbers!!!");
                     goto Select_company;
                 }
+                foreach (var departments in AppDbContext.departments)
+                {
+                    if (departments is null) break;
+                    if (departments.CompanyId != Company_id)
+                    {
+                        Console.WriteLine("There is No Employer");
+                        break;
+                    }
+                }
                 try
                 {
                     companyService.GetAllDepartment(Company_id);
@@ -355,6 +373,15 @@ while (true)
                 {
                     Console.WriteLine("You can't enter negative numbers!!!");
                     goto Select_Update;
+                }
+                foreach (var department in AppDbContext.departments)
+                {
+                    if (department is null) break;
+                    if (department.Id != update_option)
+                    {
+                        Console.WriteLine("Not Found Department");
+                        goto Select_Update;
+                    }
                 }
                 Console.WriteLine("New Department name:");
                 string? newName = Console.ReadLine();
@@ -414,6 +441,15 @@ while (true)
                     Console.WriteLine("Enter Restart Which Update Will Wappen");
                     goto Select_CompanyUpdate;
                 }
+                foreach (var company in AppDbContext.companies)
+                {
+                    if (company is null) break;
+                    if (company.Id != companyName_option)
+                    {
+                        Console.WriteLine("Not Found Company");
+                        goto Select_CompanyUpdate;
+                    }
+                }
                 Console.WriteLine("New Company name:");
                 string? newCompanyName = Console.ReadLine();
                 try
@@ -428,6 +464,8 @@ while (true)
                 }
                 break;
             case (int)Menu.GetCompanyDepartmentName:
+                Console.WriteLine("Enter Company Name:");
+                string? companyname = Console.ReadLine();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -439,8 +477,6 @@ while (true)
                     }
                     break;
                 }
-                Console.WriteLine("Enter Company Name:");
-                string? companyname = Console.ReadLine();
                 try
                 {
                     companyService.GetAllDepartmentName(companyname);
@@ -544,6 +580,15 @@ while (true)
                     Console.WriteLine("Choose Correctly");
                     goto Select_emp;
                 }
+                foreach (var employer1 in AppDbContext.employers)
+                {
+                    if (employer1 is null) break;
+                    if (employer1.Id != employer_option)
+                    {
+                        Console.WriteLine("Not Found Other Employer");
+                        goto Select_emp;
+                    }
+                }
                 departmendServis.GetAll();
             Select_DeparmentId:
                 Console.WriteLine("***********************************************************");
@@ -560,6 +605,15 @@ while (true)
                 {
                     Console.WriteLine("Choose Correctly");
                     goto Select_DeparmentId;
+                }
+                foreach (var employer2 in AppDbContext.employers)
+                {
+                    if (employer2 is null) break;
+                    if (employer2.DeparmentId != departmentId_option)
+                    {
+                        Console.WriteLine("Not Found Other Department");
+                        goto Select_DeparmentId;
+                    }
                 }
                 try
                 {

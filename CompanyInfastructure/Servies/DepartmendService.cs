@@ -7,11 +7,11 @@ namespace CompanyInfastructuure.Servies;
 
 public class DepartmendService
 {
-   private EmployerService employerService;
-    public DepartmendService()
-    {
-        employerService= new EmployerService();
-    }
+    //private EmployerService employerService;
+    //public DepartmendService()
+    //{
+    //    employerService = new EmployerService();
+    //}
     public static int _count = 0;
     public void Created(string name, int employer_limit, int Company_Id)
     {
@@ -68,13 +68,14 @@ public class DepartmendService
     {
         for (int i = 0; i < _count; i++)
         {
-            if (AppDbContext.departments[i].Id==id)
+            if (AppDbContext.departments is null) break;
+            if (AppDbContext.departments[i].Id == id)
             {
                 String company_ = String.Empty;
                 foreach (var compaany in AppDbContext.companies)
                 {
                     if (compaany is null) break;
-                    if (AppDbContext.departments[i].CompanyId==compaany.Id)
+                    if (AppDbContext.departments[i].CompanyId == compaany.Id)
                     {
                         company_ = compaany.Name;
                         break;
@@ -113,12 +114,10 @@ public class DepartmendService
                         Console.WriteLine("Employer Name:"+employer.Name);
                         Console.WriteLine("Employer Surname:"+employer.Surname);
                         Console.WriteLine("************");
+                        break;
                     }
                 }
-                if (true)
-                {
-                    throw new NotFoundEmployer("Not Found Employer");
-                }
+                break;
             }
         }
         Console.WriteLine("-------------------------------");

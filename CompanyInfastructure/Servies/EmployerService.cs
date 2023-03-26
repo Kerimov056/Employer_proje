@@ -7,11 +7,16 @@ namespace CompanyInfastructuure.Servies;
 
 public class EmployerService
 {
-    DepartmendService departmendService;
+    private DepartmendService departmendService;
     public EmployerService employerService;
-    private static int _EmpLimitCount = 0;
-
     public static int _count = 0;
+
+    public EmployerService()
+    {
+        departmendService= new DepartmendService();
+    }
+
+    private static int _EmpLimitCount = 0;
     public void Create(string _name, string _surname, double _salary, int _departmentId)
     {
         foreach (var department1 in AppDbContext.departments)
@@ -63,8 +68,8 @@ public class EmployerService
         }
     }
 
-    
-    public void Employer_Info(string name)                       
+
+    public void Employer_Info(string name)
     {
         foreach (var employer in AppDbContext.employers)
         {
@@ -81,9 +86,9 @@ public class EmployerService
         bool isSearch = false;
         for (int i = 0; i < AppDbContext.employers.Length; i++)
         {
-            if (AppDbContext.employers[i].Name==name)
+            if (AppDbContext.employers[i].Name == name)
             {
-                isSearch=true;
+                isSearch = true;
                 Console.WriteLine($"Id:{AppDbContext.employers[i].Id} " +
                 $"\nName:{AppDbContext.employers[i].Name}" +
                 $"\nSurname:{AppDbContext.employers[i].Surname} " +

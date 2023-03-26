@@ -93,12 +93,10 @@ public class CompanyService
                         Console.WriteLine("Department Name:"+department.Name);
                         Console.WriteLine("Department Emlpoyer Limit:"+department.EmployerLimit);
                         Console.WriteLine("************");
+                        break;
                     }
                 }
-                if (true)
-                {
-                    throw new AddDepartmentNotExistException("This Department is Not Exist");
-                }
+                break;
             }
         }
     }
@@ -133,12 +131,11 @@ public class CompanyService
                         Console.WriteLine("Department Name:" + department.Name);
                         Console.WriteLine("Department Emlpoyer Limit:" + department.EmployerLimit);
                         Console.WriteLine("************");
+                        break;
                     }
                 }
-                if (true)
-                {
-                    throw new AddDepartmentNotExistException("This Department is Not Exist");
-                }
+                break;
+                
             }
             
         }
