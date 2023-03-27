@@ -158,6 +158,11 @@ public class EmployerService
 
 
 
+    /*
+     Employer LogIn iscinin oz sexsi kabinetine girir ve bezi islemleri yerine yetire bilir.sirketin emlpoyeri ucun bir appication 
+     Burda isci oz gelirine baxa bilir gelirin artira biliir ve yaxid pul cixarda bilir ve yaxud hansisa isci dostuna pul gondere bilir. 
+     */
+
 
     public void EmployerLogIn(string name,string password)
     {

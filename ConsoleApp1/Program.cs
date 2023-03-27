@@ -1,6 +1,7 @@
 ﻿using CompanyInfastructuure.DbContext;
 using CompanyInfastructuure.Entityes.Exceptioon;
 using CompanyInfastructuure.Servies;
+using CompanyInfastructuure.Utilitis;
 using CompanyInfastructuure.Utilitis.Helper;
 using Employeer.Core;
 using Employeer.Core.Entity;
@@ -420,15 +421,6 @@ while (true)
                 {
                     Console.WriteLine("You can't enter negative numbers!!!");
                     goto Select_Update;
-                }
-                foreach (var department in AppDbContext.departments)
-                {
-                    if (department is null) break;
-                    if (department.Id != update_option)
-                    {
-                        Console.WriteLine("Not Found Department");
-                        goto Select_Update;
-                    }
                 }
                 Console.WriteLine("New Department name:");
                 string? newName = Console.ReadLine();

@@ -1,5 +1,6 @@
 ﻿using CompanyInfastructuure.DbContext;
 using CompanyInfastructuure.Entityes.Exceptioon;
+using CompanyInfastructuure.Utilitis;
 using Employeer.Core.Entity;
 using System.Security.Cryptography.X509Certificates;
 
@@ -133,10 +134,18 @@ public class DepartmendService
         }
         for (int i = 0; i < AppDbContext.departments.Length; i++)
         {
+            if (AppDbContext.departments[i] is null) break;
+            if (AppDbContext.departments[i].Name == name)
+            {
+                throw new DubbleDepartmentNameExceptiion("Bu adda Department Movcuddur.");
+            }
+        }
+        for (int i = 0; i < AppDbContext.departments.Length; i++)
+        {
             if (AppDbContext.departments[i].Id==_update)
-            {                                                                           
+            {
                 AppDbContext.departments[i].Name = name;
-                AppDbContext.departments[i].EmployerLimit = employer_limit;
+                AppDbContext.departments[i].EmployerLimit= employer_limit;
                 break;
             }
         }
