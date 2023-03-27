@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Employer.Core\Employeer.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>

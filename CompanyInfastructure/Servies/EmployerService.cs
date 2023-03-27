@@ -1,5 +1,8 @@
 ﻿using CompanyInfastructuure.DbContext;
 using CompanyInfastructuure.Entityes.Exceptioon;
+using CompanyInfastructuure.logical;
+using CompanyInfastructuure.Utilitis.Exceptioon;
+using CompanyInfastructuure.Utilitis.Helper;
 using Employeer.Core;
 using System.Xml.Linq;
 
@@ -7,17 +10,19 @@ namespace CompanyInfastructuure.Servies;
 
 public class EmployerService
 {
+
     private DepartmendService departmendService;
     public EmployerService employerService;
     public static int _count = 0;
 
+    EmployerKartTransactions KartTransactions = new EmployerKartTransactions();
     public EmployerService()
     {
         departmendService= new DepartmendService();
     }
 
     private static int _EmpLimitCount = 0;
-    public void Create(string _name, string _surname, double _salary, int _departmentId)
+    public void Create(string _name, string _surname, double _salary, int _departmentId,string password)
     {
         foreach (var department1 in AppDbContext.departments)
         {
@@ -37,18 +42,26 @@ public class EmployerService
         {
             if (_departmentId == department.Id)
             {
-                if (_EmpLimitCount < department.EmployerLimit)                   
+                foreach (var item in AppDbContext.employers)
                 {
-                    _EmpLimitCount++;
-                     break;
+                    if (item is null) break;
+                    if (item.DeparmentId == _departmentId)
+                    {
+                    if (_EmpLimitCount < department.EmployerLimit)
+                    {
+                        _EmpLimitCount++;
+                        break;
+                    }
+                    else
+                    {
+                        throw new CapacityLimitException("\nThe Limit is Already Full");
+                    }
+                    }
                 }
-                else
-                {
-                    throw new CapacityLimitException("The Limit is Already Full");
-                }
+                break;
             }
         }
-        Employer employer = new Employer(_name,_surname,_salary,_departmentId);
+        Employer employer = new Employer(_name,_surname,_salary,_departmentId,password);
         AppDbContext.employers[_count++]=employer;
     }
 
@@ -139,6 +152,171 @@ public class EmployerService
             {                                                             
                 AppDbContext.employers[i].DeparmentId = DepartmentId;
                 break;
+            }
+        }
+    }
+
+
+
+
+    public void EmployerLogIn(string name,string password)
+    {
+        for (int i = 0; i < AppDbContext.employers.Length; i++)
+        {
+            if (AppDbContext.employers[i] is null)
+            {
+                throw new NotFoundEmployerExciptioon("\nNot Found Employer!!!");
+            }
+            if (AppDbContext.employers[i].Name==name && AppDbContext.employers[i].Password==password)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome:");
+                while (true)
+                {
+                option:
+                    Console.WriteLine("0 -> Exit" +
+                        "\n1 -> WithdrawMoney" +
+                        "\n2 -> Deposit Money" +
+                        "\n3 -> Balance" +
+                        "\n4 -> Money Transfer");
+                    
+                    string? check=Console.ReadLine();
+                    int Check;
+                    bool TryToCheck=int.TryParse(check, out Check);
+                    if (TryToCheck)
+                    {
+                        switch (Check)
+                        {
+                            #region Exit
+                            case (int)LogInMenu.Exit:
+                                Environment.Exit(0);
+                                break;
+                            #endregion
+
+                            #region WithdrawMoney
+                            case (int)LogInMenu.WithdrawMoney:
+                                Console.WriteLine("The Balance you want to withdraw:");
+                                string? salary=Console.ReadLine();
+                                int Salary;
+                                bool TryToSalary=int.TryParse(salary, out Salary);
+                                if (!TryToSalary)
+                                {
+                                    Console.WriteLine("Enter Correct Money");
+                                    goto case (int)LogInMenu.WithdrawMoney;
+                                }
+                                if (Salary < 0)
+                                {
+                                    Console.WriteLine("You can't enter negative numbers");
+                                    goto case (int)LogInMenu.WithdrawMoney;
+                                }
+                                try
+                                {
+                                    KartTransactions.WithdrawMoney(AppDbContext.employers[i].Id,Salary);
+                                    Console.WriteLine("successful");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                break;
+                            #endregion
+
+                            #region DepositMoney
+                            case (int)LogInMenu.Depositmoney:
+                                Console.WriteLine("How much money do you want to invest?");
+                                string? inverst = Console.ReadLine();
+                                double Inverst;
+                                bool TryToInverst = double.TryParse(inverst, out Inverst);
+                                if (!TryToInverst)
+                                {
+                                    Console.WriteLine("Enter Correct Money");
+                                    goto case (int)LogInMenu.Depositmoney;
+                                }
+                                if (Inverst < 0)
+                                {
+                                    Console.WriteLine("You can't enter negative numbers");
+                                    goto case (int)LogInMenu.Depositmoney;
+                                }
+                                try
+                                {
+                                    KartTransactions.Depositmoney(AppDbContext.employers[i].Id, Inverst);
+                                    Console.WriteLine("Successful");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                break;
+                                case (int)LogInMenu.Balance:
+                                Console.WriteLine("Balance:");
+                                KartTransactions.Balance(AppDbContext.employers[i].Id);
+                                break;
+                            #endregion
+
+                            #region MoneyTransfer
+                            case (int)LogInMenu.MoneyTransfer:
+                                GetAll();
+                                Console.WriteLine("******************");
+                                Console.WriteLine($"Balance:");
+                                KartTransactions.Balance(AppDbContext.employers[i].Id);
+                                Console.WriteLine("Who do you want to send money to(id)?");
+                                string? employers = Console.ReadLine();
+                                int Employers;
+                                bool TryToWhoEmp = int.TryParse(employers, out Employers);
+                                if (!TryToWhoEmp)
+                                {
+                                    Console.WriteLine("Enter Correct Id");
+                                    goto case (int)LogInMenu.Balance;
+                                }
+                                if (Employers < 0)
+                                {
+                                    Console.WriteLine("You can't enter negative numbers");
+                                    goto case (int)LogInMenu.Balance;
+                                }
+                                foreach (var user in AppDbContext.employers)
+                                {
+                                    if (user is null)
+                                    {
+                                        Console.WriteLine("There is no other account");
+                                        goto option;
+                                    }
+                                    break;
+                                }
+                            Enter_TransferMoney:
+                                Console.WriteLine("How much money do you want to send?");
+                                string? transferMoney = Console.ReadLine();
+                                double TransferMoney;
+                                bool TryToTransferMoney = double.TryParse(transferMoney, out TransferMoney);
+                                if (!TryToTransferMoney)
+                                {
+                                    Console.WriteLine("Enter Correct Money");
+                                    goto Enter_TransferMoney;
+                                }
+                                if (TransferMoney < 0)
+                                {
+                                    Console.WriteLine("You can't enter negative numbers");
+                                    goto Enter_TransferMoney;
+                                }
+                                try
+                                {
+                                    KartTransactions.MoneyTransfer(AppDbContext.employers[i].Id, Employers, TransferMoney);
+                                    Console.WriteLine("Transfer Completed");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                break;
+                            #endregion
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\"Select coreet ones from menu:");
+                    }
+                }
             }
         }
     }

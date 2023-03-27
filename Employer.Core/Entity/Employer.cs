@@ -9,6 +9,7 @@ public class Employer:iEntity
     public string Surname { get; set; }
     public double Salary { get; set; }
     public int DeparmentId { get; set; }
+    public string Password { get; set;}
     public static int Counter { get;private set; }
 
     public Employer()
@@ -16,11 +17,12 @@ public class Employer:iEntity
         Id=Counter++;
     }
 
-    public Employer(string name,string surname,double salary,int DepartmentId):this() 
+    public Employer(string name,string surname,double salary,int DepartmentId,string password):this() 
     {
         this.Name=name;
         this.Surname=surname;
         this.Salary=salary;
         this.DeparmentId=DepartmentId;
+        this.Password=password;
     }
 }

@@ -4,7 +4,9 @@ public class HelperMenu
 {
 }
 
-public enum Menu { Exit=0,
+public enum Menu
+{ 
+    Exit=0,
     CreatedCompany,
     ListCompany,
     CreatedDepartment,
@@ -19,4 +21,15 @@ public enum Menu { Exit=0,
     DeleteCompany,
     EmployerInformation,
     EmployerDepartmentChange,
-    CompanyInfo }
+    CompanyInfo,
+    EmployerLogIn
+}
+
+public enum LogInMenu
+{
+    Exit = 0,
+    WithdrawMoney,
+    Depositmoney,
+    Balance,
+    MoneyTransfer
+}

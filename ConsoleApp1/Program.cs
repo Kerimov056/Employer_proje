@@ -37,7 +37,11 @@ while (true)
         "\n12 -> Delete Company" +                          //DataBase'deki movcud bir Company'ni silmek.  //yarimciq qalib
         "\n13 -> Employee Information" +                   //bir employeri'n butun melumatlari:   
         "\n14 -> Employerin Department'in deyis" +        //Employerin departmentini deyismek.          //yarimciq qalib 
-        "\n15 -> Company Info");                         //Bir Company'deki butun departmentleri hemen departmendeki Employerler'i ekrana cixaardir.
+        "\n15 -> Company Info" +                         //Bir Company'deki butun departmentleri hemen departmendeki Employerler'i ekrana cixaardir.
+
+                                      
+                                    //Employer Appilication...      
+        "\n16 -> Employer Login");                      //Employerin şexsi kabineti.Empolyerin melumatlari ve bzi isler'i.    
 
 
     Console.WriteLine("-----------------------");
@@ -48,9 +52,13 @@ while (true)
     {
         switch (menu)
         {
+            #region Exit:
             case (int)Menu.Exit:
                 Environment.Exit(0);
                 break;
+            #endregion;
+
+            #region Created Company
             case (int)Menu.CreatedCompany:
                 Console.WriteLine("Enter Company Name:");
                 string? Name = Console.ReadLine();
@@ -65,6 +73,9 @@ while (true)
                     goto case (int)Menu.CreatedCompany;
                 }
                 break;
+            #endregion
+
+            #region List Company
             case (int)Menu.ListCompany:
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
@@ -80,6 +91,9 @@ while (true)
                 Console.WriteLine("Company List:");
                 companyService.GetAll();
                 break;
+            #endregion
+
+            #region Created Department
             case (int)Menu.CreatedDepartment:
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
@@ -147,6 +161,9 @@ while (true)
                     goto case (int)Menu.CreatedDepartment;
                 }
                 break;
+            #endregion
+
+            #region List Department
             case (int)Menu.ListDepartment:
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
@@ -162,6 +179,9 @@ while (true)
                 Console.WriteLine("List Department:");
                 departmendServis.GetAll();
                 break;
+            #endregion
+
+            #region Created Employer
             case (int)Menu.CreatedEmployer:
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
@@ -205,8 +225,23 @@ while (true)
                     Console.WriteLine("You can't enter negative numbers!!!");
                     goto Select_Salary;
                 }
+            Select_Password:
+                Console.WriteLine("\nEnter Employer Password");
+                string? EmployerPasword = "";
+                EmployerPasword.Trim();
+                ConsoleKeyInfo parol;
+                do
+                {
+                    parol = Console.ReadKey(true);
+
+                    if (parol.Key != ConsoleKey.Enter)
+                    {
+                        EmployerPasword += parol.KeyChar;
+                        Console.Write("*");
+                    }
+                } while (parol.Key != ConsoleKey.Enter);
             Select_DepartmenId:
-                Console.WriteLine("Enter Depatrment (Id):");
+                Console.WriteLine("\nEnter Depatrment (Id):");
                 departmendServis.GetAll();
                 string? result = Console.ReadLine();
                 int DepartmentId;
@@ -223,8 +258,8 @@ while (true)
                 }
                 try
                 {
-                    employerService.Create(EmployerName, EmployerSurname, Salary, DepartmentId);
-                    Console.WriteLine("Succesfully created");
+                    employerService.Create(EmployerName, EmployerSurname, Salary, DepartmentId, EmployerPasword);
+                    Console.WriteLine("\nSuccesfully created");
                 }
                 catch (AddCompanyFailedExceptions ex)
                 {
@@ -237,6 +272,9 @@ while (true)
                     goto Select_DepartmenId;
                 }
                 break;
+            #endregion
+
+            #region List Employer
             case (int)Menu.ListEmployer:
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
@@ -252,6 +290,9 @@ while (true)
                 Console.WriteLine("Employer List");
                 employerService.GetAll();
                 break;
+            #endregion
+
+            #region Get Depaertment Employers
             case (int)Menu.GetDepartmentEmployees:
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
@@ -299,6 +340,9 @@ while (true)
                     goto Select_Department;
                 }
                 break;
+            #endregion
+
+            #region Get Company Department
             case (int)Menu.GetCompanyDepartment:
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
@@ -346,6 +390,9 @@ while (true)
                     goto Select_company;
                 }
                 break;
+            #endregion
+
+            #region Update Department
             case (int)Menu.UpdateDepartment:
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
@@ -412,6 +459,9 @@ while (true)
                     goto case (int)Menu.UpdateDepartment;
                 }
                 break;
+            #endregion
+
+            #region Update Company
             case (int)Menu.UpdateCompany:
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
@@ -463,9 +513,10 @@ while (true)
                     goto case (int)Menu.UpdateCompany;
                 }
                 break;
+            #endregion
+
+            #region Get Compnay Department Name
             case (int)Menu.GetCompanyDepartmentName:
-                Console.WriteLine("Enter Company Name:");
-                string? companyname = Console.ReadLine();
                 for (int i = 0; i <= AppDbContext.departments.Length; i++)
                 {
                     if (AppDbContext.departments[i] is null)
@@ -477,6 +528,8 @@ while (true)
                     }
                     break;
                 }
+                Console.WriteLine("Enter Company Name:");
+                string? companyname = Console.ReadLine();
                 try
                 {
                     companyService.GetAllDepartmentName(companyname);
@@ -487,14 +540,17 @@ while (true)
                     goto case (int)Menu.GetCompanyDepartmentName;
                 }
                 break;
+            #endregion
+
+            #region Delete Company
             case (int)Menu.DeleteCompany:
                 for (int i = 0; i < AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
                     {
-                        Console.WriteLine("A departments does not exist");
+                        Console.WriteLine("A Company does not exist");
                         Console.WriteLine("-------Translate--------");
-                        Console.WriteLine("Department mövcud deyil:");
+                        Console.WriteLine("Company mövcud deyil:");
                         goto Start;
                     }
                     break;
@@ -526,6 +582,9 @@ while (true)
                     goto case (int)Menu.DeleteCompany;
                 }
                 break;
+            #endregion
+
+            #region Emplyers Information
             case (int)Menu.EmployerInformation:
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
@@ -552,6 +611,9 @@ while (true)
                     goto case (int)Menu.EmployerInformation;
                 }
                 break;
+            #endregion
+
+            #region Eployer Department Change
             case (int)Menu.EmployerDepartmentChange:
                 for (int i = 0; i <= AppDbContext.employers.Length; i++)
                 {
@@ -627,14 +689,17 @@ while (true)
                     goto case (int)Menu.EmployerDepartmentChange;
                 }
                 break;
+            #endregion
+
+            #region Company INfo
             case (int)Menu.CompanyInfo:
                 for (int i = 0; i <= AppDbContext.companies.Length; i++)
                 {
                     if (AppDbContext.companies[i] is null)
                     {
-                        Console.WriteLine("A Employer does not exist");
+                        Console.WriteLine("A Company does not exist");
                         Console.WriteLine("-------Translate--------");
-                        Console.WriteLine("Employer mövcud deyil:");
+                        Console.WriteLine("Company mövcud deyil:");
                         goto Start;
                     }
                     break;
@@ -665,6 +730,53 @@ while (true)
                     goto case (int)Menu.CompanyInfo;
                 }
                 break;
+            #endregion
+
+            #region Employer LogIn
+            case (int)Menu.EmployerLogIn:
+                for (int i = 0; i <= AppDbContext.employers.Length; i++)
+                {
+                    if (AppDbContext.employers[i] is null)
+                    {
+                        Console.WriteLine("A Company does not exist");
+                        Console.WriteLine("-------Translate--------");
+                        Console.WriteLine("Company mövcud deyil:");
+                        goto Start;
+                    }
+                    break;
+                }
+                Console.WriteLine("Employer Name:");
+                string? eName = Console.ReadLine();
+                eName.Trim();
+                if (string.IsNullOrWhiteSpace(eName))
+                {
+                    Console.WriteLine("Enter Correct User Name:");
+                    goto case (int)Menu.EmployerLogIn;
+                }
+                Console.WriteLine("Password:");
+                string? ePassword="";
+                ePassword.Trim();
+                ConsoleKeyInfo LogIn;
+                do
+                {
+                    LogIn = Console.ReadKey(true);
+                    
+                    if (LogIn.Key != ConsoleKey.Enter)
+                    {
+                        ePassword += LogIn.KeyChar;
+                        Console.Write("*");
+                    }
+                } while (LogIn.Key != ConsoleKey.Enter);
+                try
+                {
+                    employerService.EmployerLogIn(eName, ePassword);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                break;
+            #endregion
             default:
                 Console.WriteLine("Select coreet ones from menu:");
                 break;
@@ -678,7 +790,7 @@ while (true)
 }
 
 
-
+////////////////////////////////////////////////kart hissesin qalib
 ///hamsini yoxlaaa!!!!!!!!
 
 

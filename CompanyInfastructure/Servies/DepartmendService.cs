@@ -7,11 +7,7 @@ namespace CompanyInfastructuure.Servies;
 
 public class DepartmendService
 {
-    //private EmployerService employerService;
-    //public DepartmendService()
-    //{
-    //    employerService = new EmployerService();
-    //}
+   
     public static int _count = 0;
     public void Created(string name, int employer_limit, int Company_Id)
     {
@@ -138,8 +134,7 @@ public class DepartmendService
         for (int i = 0; i < AppDbContext.departments.Length; i++)
         {
             if (AppDbContext.departments[i].Id==_update)
-            {
-                //bura kimi deyisdirilecek update tapdi:
+            {                                                                           
                 AppDbContext.departments[i].Name = name;
                 AppDbContext.departments[i].EmployerLimit = employer_limit;
                 break;
